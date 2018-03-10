@@ -75,7 +75,7 @@
 
         // Set all pixels to a given color
         function writeFrame(red, green, blue) {
-            var leds = 512;
+            var leds = 3 * 8 * 60;
             var packet = new Uint8ClampedArray(4 + leds * 3);
 
             if (socket.readyState != 1 /* OPEN */) {
@@ -128,7 +128,7 @@
         }
 
         // Connect to a Fadecandy server running on the same computer, on the default port
-        var socket = new WebSocket('ws://localhost:7890');
+        var socket = new WebSocket('ws://fadecandypi:7890');
 
         // Put some connection status text in the corner of the screen
         $('#connectionStatus').text('Connecting to fcserver...');
