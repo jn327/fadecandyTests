@@ -35,7 +35,7 @@
 <script type="text/javascript">
 
     /*
-     * Experiment with random Color Queue      
+     * Experiment with random Color Queue
      */
 
     $(function() {
@@ -58,13 +58,13 @@
 
         // Set Default Black Color.
         var defaultColor = {r:0,b:0,g:0};
-        
+
         // Set Queue Speed, default is 3 seconds.
         var speed = 3000;
-       
+
         // Set all pixels to a given color
         function writeFrame(red, green, blue) {
-            var leds = 60;
+            var leds = 3 * 8 * 60;
             var packet = new Uint8ClampedArray(4 + leds * 3);
             // console.log(packet);
             if (socket.readyState != 1 /* OPEN */) {
@@ -82,13 +82,13 @@
 
             // Dest position in our packet. Start right after the header.
             var dest = 4;
-            
+
             //http://www.paulirish.com/2009/random-hex-color-code-snippets/
             var myRandColor = '#'+Math.floor(Math.random()*16777215).toString(16);
             var myHtmlText = "<div style='color:" + myRandColor + "'>"+ myRandColor + "</div>";
             var myObj = hexToRgb(myRandColor);
             $("#colorQueue").append(myHtmlText);
-             
+
 
             // Sample the center pixel of each LED
             for (var led = 0; led < leds; led++) {
@@ -119,7 +119,7 @@
         }
 
         // Connect to a Fadecandy server running on the same computer, on the default port
-        var socket = new WebSocket('ws://localhost:7890');
+        var socket = new WebSocket('ws://fadecandypi.local:7890');
 
         // Put some connection status text in the corner of the screen
         $('#connectionStatus').text('Connecting to fcserver...');

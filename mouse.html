@@ -10,13 +10,13 @@
     <script type="text/javascript" src="spectrum.js"></script>
     <script type="text/javascript" src="tinycolor.js"></script>
     <script type="text/javascript" src="kinetic.js"></script>
-	
+
 <script type="text/javascript">
 
     $(function() {
 
-		var leds = 40;
-		
+		var leds = 3 * 8 * 60;
+
 		var led = 0;
 		var r = 0;
 		var g = 0;
@@ -33,7 +33,7 @@
 		var start = 0;
 
 		var circles = []
-		
+
 		var stage = new Kinetic.Stage({
             container: 'light_canvas',
             width: leds*22,
@@ -52,7 +52,7 @@
                 stroke: 'black',
                 strokeWidth: 1,
                 });
-            
+
             c1.setAttr('position', led);
 
 			circles[led] = c1;
@@ -84,7 +84,7 @@
 				r = nc.toRgb().r;
 				g = nc.toRgb().g;
 				b = nc.toRgb().b;
-			}			
+			}
 
 		});
 
@@ -115,7 +115,7 @@
 		}
 
 		// Set 3 pixels to a given color
-		function writeFrame(tcolor, start) 
+		function writeFrame(tcolor, start)
 		{
 			var packet = new Uint8ClampedArray(4 + leds * 3);
 
@@ -136,7 +136,7 @@
 			var dest = 4;
 
 			// Sample the center pixel of each LED
-			for (led = 0; led < leds; led++) 
+			for (led = 0; led < leds; led++)
 			{
 				if(led < start-1 || led > start+1)
 				{
@@ -153,7 +153,7 @@
 					packet[dest++] = c.b;
 				}
 				else if(led == start)
-				{	
+				{
 					packet[dest++] = tcolor.toRgb().r;
 					packet[dest++] = tcolor.toRgb().g;
 					packet[dest++] = tcolor.toRgb().b;
@@ -163,7 +163,7 @@
 		}
 
         // Connect to a Fadecandy server running on the same computer, on the default port
-        var socket = new WebSocket('ws://localhost:7890');
+        var socket = new WebSocket('ws://fadecandypi.local:7890');
 
         // Put some connection status text in the corner of the screen
         $('#connectionStatus').text('Connecting to fcserver...');
