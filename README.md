@@ -1,1 +1,1 @@
-https://jn327.github.io/fadecandyTests/index.html
+https://jn327.github.io/fadecandyTests/
