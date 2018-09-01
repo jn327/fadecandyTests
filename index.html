@@ -1,17 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<style type="text/css">
+
+    body {
+        background: #222;
+        color: #ddd;
+        font: 15px verdana;
+    }
+
+    #connectionStatus {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    label {
+        display: block;
+        width: 100px;
+        margin: 10px 0 0 0;
+    }
+
+    input {
+        width: 400px;
+        height: 25px;
+        margin: 10px 20px;
+    }
+
+    span.value {
+        font: 20px monospace;
+    }
+
+</style>
+<script type="text/javascript">
+
+    $(function() {
+
+        // Connect to a Fadecandy server running on the same computer, on the default port
+        var socket = new WebSocket('ws://fadecandypi.local:22');
+
+        // Put some connection status text in the corner of the screen
+        $('#connectionStatus').text('Connecting to fcserver...');
+        socket.onclose = function(event) {
+            $('#connectionStatus').text('Not connected to fcserver');
+        }
+        socket.onopen = function(event) {
+            $('#connectionStatus').text('Connected');
+            animate();
+        }
+
+    })
+
+
+</script>
 </head>
 <body>
 <form>
 
-    <a href="ganzfeld.html">ganzfeld</a>
-    <a href="grid8x8_dots-relay.html">grid8x8_dots-relay</a>
-    <a href="grid8x8_dots.html">grid8x8_dots</a>
-    <a href="grid24x8z_dots_leapmotion.html">grid24x8z_dots_leapmotion</a>
-    <a href="grid24x8z_dots.html">grid24x8z_dots</a>
-    <a href="mouse.html">mouse</a>
-    <a href="random-color-pixel-strip.html">random-color-pixel-strip</a>
+    <div id="connectionStatus"></div>
+
+    <a href="pages/ganzfeld.html">ganzfeld</a>
+    <a href="pages/mouse.html">mouse</a>
+    <a href="pages/random-color-pixel-strip.html">random-color-pixel-strip</a>
 
 </form>
 </body>
