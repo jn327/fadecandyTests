@@ -45,9 +45,7 @@
             $('#connectionStatus').text('Not connected to fcserver');
         }
         socket.onopen = function(event) {
-            $('#connectionStatus').text('Connected');
-            animate();
-        }
+            $('#connectionStatus').text('Connected');        }
 
     })
 
@@ -59,12 +57,17 @@
 
     <div id="connectionStatus"></div>
 
-    <a href="pages/ganzfeld.html">ganzfeld</a>
-    <a href="pages/mouse.html">mouse</a>
-    <a href="pages/random-color-pixel-strip.html">random-color-pixel-strip</a>
-    <a href="pages/chase.html">chase</a>
-    <a href="pages/rainbow.html">rainbow</a>
-    <a href="pages/infiniteRunner/infiniteRunner.html">Infinite Runner</a>
+    <div>
+      <a href="pages/ganzfeld.html">ganzfeld</a>
+      <a href="pages/mouse.html">mouse</a>
+      <a href="pages/random-color-pixel-strip.html">random-color-pixel-strip</a>
+      <a href="pages/chase.html">chase</a>
+      <a href="pages/rainbow.html">rainbow</a>
+      <a href="pages/infiniteRunner/infiniteRunner.html">Infinite Runner</a>
+    </div>
+    <div>
+      <a href="shutdown.sh">Shutdown</a>
+    </div>
 </form>
 </body>
 </html>
